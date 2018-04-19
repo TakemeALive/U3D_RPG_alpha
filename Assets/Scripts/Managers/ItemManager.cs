@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine.Internal;
 using UnityEngine;
 
-public class ItemManager{
+public class ItemManager : MonoBehaviour{
 
-	private GameObject[] _items;
+	public GameObject woodenCrates;
+	// private GameObject[] _items;
 	// Use this for initialization
 	public void Setup () 
 	{
@@ -14,11 +15,12 @@ public class ItemManager{
 
 	public void CreateItemPickupCubes()
 	{
-		_items = new GameObject[DataManager.cubeAmount];
+		// _items = new GameObject[DataManager.cubeAmount];
 		for(int i = 0; i < DataManager.cubeAmount; i++)
-		{
-			_items[i] = GameObject.Instantiate(Resources.Load(DataManager.GetPrefabPathByName("PickupCube"))) as GameObject;
-			SetRandomPosition(_items[i]);
+		{	
+			var obj = GameObject.Instantiate(woodenCrates);
+			// crates[i] = GameObject.Instantiate(Resources.Load(DataManager.GetPrefabPathByName("PickupCube"))) as GameObject;
+			SetRandomPosition(obj);
 		}
 	}
 
@@ -33,7 +35,7 @@ public class ItemManager{
 			float keepDistanceToWall = 0.9f;
 			Vector3 itemPosition = new Vector3(
 				Random.Range(-groundSize.x / 2, groundSize.x / 2) * keepDistanceToWall,
-				1,
+				5,
 				Random.Range(-groundSize.z / 2, groundSize.z / 2) * keepDistanceToWall);							
 			item.transform.position = itemPosition;
 		}

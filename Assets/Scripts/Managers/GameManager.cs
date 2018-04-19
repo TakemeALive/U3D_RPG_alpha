@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-	private ItemManager _cubeManager;
+	private ItemManager itemManager;
 	// Use this for initialization
 	void Start () {
-		_cubeManager = new ItemManager();
-		_cubeManager.CreateItemPickupCubes();
+		itemManager = GetComponent<ItemManager>();
+		itemManager.CreateItemPickupCubes();
 		// GameObject cube = Instantiate(Resources.Load(DataManager.GetPrefabPathByName("PickupCube"))) as GameObject;
 	}
 	
